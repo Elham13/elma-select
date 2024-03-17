@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./CustomSelect.module.css";
-import { ComboBox, SelectPropTypes } from "@/utils/types";
 
 const getValue = (el: string | number | ComboBox) => {
   if (typeof el === "object") return el?.value;

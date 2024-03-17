@@ -1,6 +1,6 @@
 {
   "name": "elma-select",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "This is a select dropdown which is made purely using html and tailwind css and integrated typescript for type safety.",
   "private": false,
   "author": {
@@ -14,7 +14,7 @@
     "select dropdown",
     "picker"
   ],
-  "main": "src/components",
+  "main": "src",
   "repository": {
     "type": "git",
     "url": "https://github.com/Elham13/elma-select"
