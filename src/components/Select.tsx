@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./CustomSelect.module.css";
 import { ComboBox, SelectPropTypes } from "@/utils/types";
@@ -15,10 +16,16 @@ const getLabel = (el: string | number | ComboBox) => {
   return el;
 };
 
-const Select = ({ options }: SelectPropTypes) => {
+const Select = ({
+  options,
+  value,
+  placeholder,
+  className,
+  onChange,
+}: SelectPropTypes) => {
   const container = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string | number>("");
+  const [selected, setSelected] = useState<string | number>(value || "");
 
   const handleSelect = (elem: string | number | ComboBox) => {
     if (selected === getValue(elem)) {
@@ -53,11 +60,15 @@ const Select = ({ options }: SelectPropTypes) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (onChange) onChange(selected);
+  }, [selected]);
+
   const arrowClasses = `border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[6px] border-t-black transition-transform ${
     open ? "rotate-180" : "rotate-0"
   }`;
 
-  const btnClasses = `min-w-[10rem] w-full bg-white py-1 px-2 border border-gray-500 rounded-md cursor-pointer flex items-center justify-between outline-none`;
+  const btnClasses = `w-full bg-white py-1 px-2 border border-gray-500 rounded-md cursor-pointer flex items-center justify-between outline-none ${className}`;
 
   const listClasses = `absolute list-none w-full shadow-md bg-white border border-slate-500 rounded mt-1 max-h-[200px] overflow-y-auto transition-all focus-within:shadow-lg focus-within:shadow-green-500 z-50 ${
     classes.container
@@ -80,7 +91,7 @@ const Select = ({ options }: SelectPropTypes) => {
         }}
       >
         <span className="text-left mr-2">
-          {findSelectedLabel(selected) || "Select"}
+          {findSelectedLabel(selected) || placeholder || "Select"}
         </span>
         <span className={arrowClasses} />
       </button>

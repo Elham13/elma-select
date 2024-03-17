@@ -16,8 +16,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Elham13/elma-select"
   },
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
