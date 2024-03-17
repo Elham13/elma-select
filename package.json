@@ -1,6 +1,6 @@
 {
   "name": "elma-select",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "This is a select dropdown which is made purely using html and tailwind css and integrated typescript for type safety.",
   "private": false,
   "author": {
